@@ -9,9 +9,8 @@ package cse360assign2;
  */
 
 import java.util.Arrays;
+/*
 
-
-/**
  * Class Description: SimpleList contains a default constructor
  * as well as the methods: add, remove, count, search, and the overridden method toString.
  * The SimpleList class contains two private data members: the integer array size and the integer count.
@@ -46,15 +45,13 @@ public class SimpleList
 		// increase array size
 		if(list.length <= count)
 		{
-			int[] tempList = Arrays.copyOf(list, (int) (list.length*1.5));
+			int[] tempList = Arrays.copyOf(list, (int) (list.length * 1.5));
 			list = tempList;
-		}
-
+		}	
 		for(int index = list.length - 1; index > 0; index--)
 		{
 			list[index] = list[index - 1];
 		}
-
 		list[0] = element;
 		count++;
 	}
@@ -86,7 +83,7 @@ public class SimpleList
 		{
 			int[] tempList = Arrays.copyOf(list, (int) (list.length * .75));
 			list = tempList;
-		}
+		}		
 	}
 
 	/**
