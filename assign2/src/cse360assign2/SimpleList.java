@@ -1,4 +1,12 @@
 package cse360assign2;
+/**
+ * @author Natalie Moes
+ * Class ID: 399
+ * Assignment Number: 2
+ * File Description: This file contains the public class SimpleList, 
+ * which constructs a SimpleList object and contains method members to manipulate
+ * data contained in a SimpleList object.
+ */
 import java.util.Arrays;
 /**
  * Class Description: SimpleList contains a default constructor
