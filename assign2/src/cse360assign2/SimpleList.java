@@ -1,16 +1,6 @@
 package cse360assign2;
-/**
- * @author Natalie Moes
- * Class ID: 399
- * Assignment Number: 2
- * File Description: This file contains the public class SimpleList, 
- * which constructs a SimpleList object and contains method members to manipulate
- * data contained in a SimpleList object.
- */
-
 import java.util.Arrays;
-/*
-
+/**
  * Class Description: SimpleList contains a default constructor
  * as well as the methods: add, remove, count, search, and the overridden method toString.
  * The SimpleList class contains two private data members: the integer array size and the integer count.
@@ -34,7 +24,7 @@ public class SimpleList
 	 * Method Description: the method add takes one integer parameter
 	 * which should be the element that is added to the SimpleList. Before adding the element 
 	 * to the front of the list, all elements contained in the list array are shifted up.
-	 * If the array is full, then the element at the end of the array is overwritten.
+	 * If the array is full, then the array is expanded by 50%.
 	 * The element parameter is then added to the beginning of the list at index 0.
 	 * The data member count is incremented to account for the added value to the list.
 	 * 
@@ -47,11 +37,13 @@ public class SimpleList
 		{
 			int[] tempList = Arrays.copyOf(list, (int) (list.length * 1.5));
 			list = tempList;
-		}	
+		}
+
 		for(int index = list.length - 1; index > 0; index--)
 		{
 			list[index] = list[index - 1];
 		}
+
 		list[0] = element;
 		count++;
 	}
@@ -60,7 +52,8 @@ public class SimpleList
 	 * Method Description: the method remove has one integer parameter,
 	 * which is the element that is to be removed from the SimpleList.  
 	 * All instances of the element contained in the list are removed, and 
-	 * the list is sorted so that there are no empty elements in the list.
+	 * the list is sorted so that there are no empty elements in the list. If at 
+	 * least 25% of the array is empty, then the array length is decreased by 25%.
 	 * The data member count is decremented to account for the removal of an
 	 * element from the list.
 	 * @param element the value of the element to be removed from the list 
@@ -77,13 +70,14 @@ public class SimpleList
 			count--;
 			list[count] = 0;	
 			index = search(element);
-		}			
+		}
+		
 		// decrease array size
 		if(count < (int) (list.length * .25))
 		{
 			int[] tempList = Arrays.copyOf(list, (int) (list.length * .75));
 			list = tempList;
-		}		
+		}
 	}
 
 	/**
@@ -168,4 +162,3 @@ public class SimpleList
 		return list.length - count;
 	}
 }
-
