@@ -46,12 +46,12 @@ public class SimpleList
 			int[] tempList = Arrays.copyOf(list, (int) (list.length * 1.5));
 			list = tempList;
 		}
-
+		// shift all elements -> 1 
 		for(int index = list.length - 1; index > 0; index--)
 		{
 			list[index] = list[index - 1];
 		}
-
+		// insert element at front
 		list[0] = element;
 		count++;
 	}
@@ -68,6 +68,7 @@ public class SimpleList
 	 */
 	public void remove(int element) 
 	{
+		// find and remove all instances of element
 		int index = search(element);
 		while(index > -1)
 		{
@@ -79,7 +80,6 @@ public class SimpleList
 			list[count] = 0;	
 			index = search(element);
 		}
-		
 		// decrease array size
 		if(count < (int) (list.length * .25))
 		{
@@ -109,6 +109,7 @@ public class SimpleList
 	public String toString()
 	{		
 		String str = "";
+		// concatenate each element onto string
 		for(int index = 0; index < list.length - 1; index++)
 		{
 			str = str + list[index] + " ";
@@ -128,13 +129,14 @@ public class SimpleList
 	public int search(int element)
 	{
 		int index = list.length - 1;
+		// decrement index from end until reaching a match
 		while(index >= 0  && list[index] != element)
 		{
 			index--;
 		}
 		return index;		
 	}
-	
+
 	/**
 	 * Method Description: inserts argument at the end of the list 
 	 * and increases the size of the list by 50% if the list is full.
@@ -148,19 +150,43 @@ public class SimpleList
 			int[] tempList = Arrays.copyOf(list, (int) (list.length * 1.5));
 			list = tempList;
 		}
+		// insert element at end
 		list[count] = element;		 
 		count++;
 	}
-	
+
 	/** 
 	 * Method Description: returns the first element in the list
 	 * @return first element in list
 	 */
 	public int first()
 	{
-		return list[0];
+		if(count > 0)
+		{
+			return list[0];			
+		}
+		else
+		{
+			return -1;
+		}
 	}
 	
+	/** 
+	 * Method Description: returns the last element in the list
+	 * @return last element in list
+	 */
+	public int last()
+	{
+		if(count > 0)
+		{
+			return list[count - 1];			
+		}
+		else
+		{
+			return -1;
+		}
+	}
+
 	/**
 	 * Method Description: returns the number of empty positions in the list
 	 * @return the difference of list length and number of elements
